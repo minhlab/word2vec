@@ -78,11 +78,11 @@ The word vectors can be also used for deriving word classes from huge data sets.
 
 The training speed can be significantly improved by using parallel training on multiple-CPU machine (use the switch '-threads N'). The hyper-parameter choice is crucial for performance (both speed and accuracy), however varies for different applications. The main choices to make are:
 
-architecture: skip-gram (slower, better for infrequent words) vs CBOW (fast)
-the training algorithm: hierarchical softmax (better for infrequent words) vs negative sampling (better for frequent words, better with low dimensional vectors)
-sub-sampling of frequent words: can improve both accuracy and speed for large data sets (useful values are in range 1e-3 to 1e-5)
-dimensionality of the word vectors: usually more is better, but not always
-context (window) size: for skip-gram usually around 10, for CBOW around 5
+- architecture: skip-gram (slower, better for infrequent words) vs CBOW (fast)
+- the training algorithm: hierarchical softmax (better for infrequent words) vs negative sampling (better for frequent words, better with low dimensional vectors)
+- sub-sampling of frequent words: can improve both accuracy and speed for large data sets (useful values are in range 1e-3 to 1e-5)
+- dimensionality of the word vectors: usually more is better, but not always
+- context (window) size: for skip-gram usually around 10, for CBOW around 5
 
 ## Where to obtain the training data
 
@@ -97,18 +97,26 @@ The quality of the word vectors increases significantly with amount of the train
 
 ## Pre-trained word and phrase vectors
 
-We are publishing pre-trained vectors trained on part of Google News dataset (about 100 billion words). The model contains 300-dimensional vectors for 3 million words and phrases. The phrases were obtained using a simple data-driven approach described in [2]. The archive is available here: GoogleNews-vectors-negative300.bin.gz.
+We are publishing pre-trained vectors trained on part of Google News dataset (about 100 billion words). The model contains 300-dimensional vectors for 3 million words and phrases. The phrases were obtained using a simple data-driven approach described in [2]. The archive is available here: [GoogleNews-vectors-negative300.bin.gz](https://drive.google.com/file/d/0B7XkCwpI5KDYNlNUTTlSS21pQmM/edit?usp=sharing).
 
-An example output of ./distance GoogleNews-vectors-negative300.bin:
+An example output of `./distance GoogleNews-vectors-negative300.bin`:
 
-``` Enter word or sentence (EXIT to break): Chinese river
+``` 
+Enter word or sentence (EXIT to break): Chinese river
 
 Word Cosine distance
 
    Yangtze_River              0.667376
          Yangtze              0.644091
   Qiantang_River              0.632979
-Yangtze_tributary 0.623527 Xiangjiang_River 0.615482 Huangpu_River 0.604726 Hanjiang_River 0.598110 Yangtze_river 0.597621 Hongze_Lake 0.594108 Yangtse 0.593442 ```
+Yangtze_tributary       0.623527 
+Xiangjiang_River 0.615482 
+Huangpu_River 0.604726 
+Hanjiang_River 0.598110 
+Yangtze_river 0.597621 
+Hongze_Lake 0.594108 
+Yangtse 0.593442 
+```
 
 The above example will average vectors for words 'Chinese' and 'river' and will return the closest neighbors to the resulting vector. More examples that demonstrate results of vector addition are presented in [2]. Note that more precise and disambiguated entity vectors can be found in the following dataset that uses Freebase naming.
 
@@ -120,13 +128,22 @@ Entity vectors trained on 100B words from various news articles: freebase-vector
 Entity vectors trained on 100B words from various news articles, using the deprecated /en/ naming (more easily readable); the vectors are sorted by frequency: freebase-vectors-skipgram1000-en.bin.gz
 Here is an example output of ./distance freebase-vectors-skipgram1000-en.bin:
 
-``` Enter word or sentence (EXIT to break): /en/geoffrey_hinton
+``` 
+Enter word or sentence (EXIT to break): /en/geoffrey_hinton
 
 Word Cosine distance
 
        /en/marvin_minsky              0.457204
          /en/paul_corkum              0.443342
-/en/william_richard_peltier 0.432396 /en/brenda_milner 0.430886 /en/john_charles_polanyi 0.419538 /en/leslie_valiant 0.416399 /en/hava_siegelmann 0.411895 /en/hans_moravec 0.406726 /en/david_rumelhart 0.405275 /en/godel_prize 0.405176 ```
+/en/william_richard_peltier 0.432396 
+/en/brenda_milner 0.430886 
+/en/john_charles_polanyi 0.419538 
+/en/leslie_valiant 0.416399 
+/en/hava_siegelmann 0.411895 
+/en/hans_moravec 0.406726 
+/en/david_rumelhart 0.405275 
+/en/godel_prize 0.405176 
+```
 
 Final words
 
