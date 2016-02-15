@@ -1,8 +1,8 @@
-Introduction
+## Introduction
 
 This tool provides an efficient implementation of the continuous bag-of-words and skip-gram architectures for computing vector representations of words. These representations can be subsequently used in many natural language processing applications and for further research.
 
-Quick start
+## Quick start
 
 Download the code: svn checkout http://word2vec.googlecode.com/svn/trunk/
 Run 'make' to compile word2vec tool
@@ -72,9 +72,9 @@ Word clustering
 
 The word vectors can be also used for deriving word classes from huge data sets. This is achieved by performing K-means clustering on top of the word vectors. The script that demonstrates this is ./demo-classes.sh. The output is a vocabulary file with words and their corresponding class IDs, such as:
 
-carnivores 234 carnivorous 234 cetaceans 234 cormorant 234 coyotes 234 crocodile 234 crocodiles 234 crustaceans 234 cultivated 234 danios 234 . . . acceptance 412 argue 412 argues 412 arguing 412 argument 412 arguments 412 belief 412 believe 412 challenge 412 claim 412
+`carnivores 234 carnivorous 234 cetaceans 234 cormorant 234 coyotes 234 crocodile 234 crocodiles 234 crustaceans 234 cultivated 234 danios 234 . . . acceptance 412 argue 412 argues 412 arguing 412 argument 412 arguments 412 belief 412 believe 412 challenge 412 claim 412`
 
-Performance
+## Performance
 
 The training speed can be significantly improved by using parallel training on multiple-CPU machine (use the switch '-threads N'). The hyper-parameter choice is crucial for performance (both speed and accuracy), however varies for different applications. The main choices to make are:
 
@@ -83,17 +83,19 @@ the training algorithm: hierarchical softmax (better for infrequent words) vs ne
 sub-sampling of frequent words: can improve both accuracy and speed for large data sets (useful values are in range 1e-3 to 1e-5)
 dimensionality of the word vectors: usually more is better, but not always
 context (window) size: for skip-gram usually around 10, for CBOW around 5
-Where to obtain the training data
+
+## Where to obtain the training data
 
 The quality of the word vectors increases significantly with amount of the training data. For research purposes, you can consider using data sets that are available on-line:
 
-First billion characters from wikipedia (use the pre-processing perl script from the bottom of Matt Mahoney's page)
-Latest Wikipedia dump Use the same script as above to obtain clean text. Should be more than 3 billion words.
-WMT11 site: text data for several languages (duplicate sentences should be removed before training the models)
-Dataset from "One Billion Word Language Modeling Benchmark" Almost 1B words, already pre-processed text.
-UMBC webbase corpus Around 3 billion words, more info here. Needs further processing (mainly tokenization).
-Text data from more languages can be obtained at statmt.org and in the Polyglot project.
-Pre-trained word and phrase vectors
+- First billion characters from wikipedia (use the pre-processing perl script from the bottom of [Matt Mahoney's page](http://mattmahoney.net/dc/textdata.html))
+- Latest Wikipedia dump Use the same script as above to obtain clean text. Should be more than 3 billion words.
+- WMT11 site: text data for several languages (duplicate sentences should be removed before training the models)
+- Dataset from "One Billion Word Language Modeling Benchmark" Almost 1B words, already pre-processed text.
+- UMBC webbase corpus Around 3 billion words, more info here. Needs further processing (mainly tokenization).
+- Text data from more languages can be obtained at statmt.org and in the Polyglot project.
+
+## Pre-trained word and phrase vectors
 
 We are publishing pre-trained vectors trained on part of Google News dataset (about 100 billion words). The model contains 300-dimensional vectors for 3 million words and phrases. The phrases were obtained using a simple data-driven approach described in [2]. The archive is available here: GoogleNews-vectors-negative300.bin.gz.
 
@@ -130,7 +132,7 @@ Final words
 
 Thank you for trying out this toolkit, and do not forget to let us know when you obtain some amazing results! We hope that the distributed representations will significantly improve the state of the art in NLP.
 
-References
+## References
 
 [1] Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. Efficient Estimation of Word Representations in Vector Space. In Proceedings of Workshop at ICLR, 2013.
 
